@@ -1,0 +1,27 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--color-border);
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--color-bg-secondary);
+}
+
+.quote {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-accent-purple), transparent);
+  margin: 20px auto;
+}
