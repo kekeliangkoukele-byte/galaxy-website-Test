@@ -1,0 +1,88 @@
+.page { padding: 120px 0 80px; }
+.backLink { display: inline-flex; align-items: center; gap: 8px; color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 32px; transition: color var(--transition-fast); text-decoration: none; }
+.backLink:hover { color: #fff; }
+
+.layout { display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: start; }
+
+.header { margin-bottom: 24px; }
+.nameRow { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+.name { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: #fff; }
+.nameEn { font-size: 1.1rem; color: var(--color-text-muted); font-style: italic; }
+
+.typeTag {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--planet-color, var(--color-accent-purple));
+  border: 1px solid color-mix(in srgb, var(--planet-color, var(--color-accent-purple)) 28%, transparent);
+  border-radius: 100px;
+  background: color-mix(in srgb, var(--planet-color, var(--color-accent-purple)) 7%, transparent);
+  margin-bottom: 20px;
+}
+
+.description { font-size: 1rem; color: var(--color-text-secondary); line-height: 1.85; }
+
+.highlights {
+  padding: 14px 18px;
+  background: rgba(245,166,35,0.05);
+  border-left: 3px solid var(--color-accent-gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 28px 0;
+}
+.highlightLabel { display: block; font-size: 0.72rem; color: var(--color-accent-gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 600; }
+.highlights p { font-size: 0.92rem; color: var(--color-text-secondary); line-height: 1.7; }
+
+.sectionTitle { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 16px; letter-spacing: 0.02em; }
+
+.statsGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.statCard {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  backdrop-filter: blur(8px);
+  transition: border-color var(--transition-normal);
+}
+.statCard:hover { border-color: rgba(255,255,255,0.12); }
+.statLabel { display: block; font-size: 0.68rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.statValue { display: block; font-size: 0.9rem; font-weight: 600; color: #fff; }
+
+.actions { margin-bottom: 28px; }
+.compareBtn {
+  padding: 10px 24px;
+  font-size: 0.88rem; font-family: var(--font-sans);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: border-color var(--transition-normal), color var(--transition-normal), background var(--transition-normal);
+}
+.compareBtn:hover { border-color: rgba(255,255,255,0.22); color: #fff; }
+.compareBtn.compared { background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.35); color: #c4b5fd; }
+
+.relatedLinks { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.relatedLink {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: border-color var(--transition-normal), color var(--transition-normal);
+}
+.relatedLink:hover { border-color: rgba(255,255,255,0.18); color: #fff; }
+
+.source { font-size: 0.74rem; color: var(--color-text-muted); }
+
+.sidebar { position: sticky; top: 100px; }
+.visualName { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: #fff; margin-top: 16px; letter-spacing: 0.02em; }
+.visualSystem { font-size: 0.82rem; color: var(--color-text-muted); margin-top: 4px; }
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+}

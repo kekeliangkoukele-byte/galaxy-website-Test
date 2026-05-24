@@ -1,0 +1,95 @@
+.figure {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.imgWrapper {
+  position: relative;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  min-height: 200px;
+}
+
+.img {
+  width: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.img.loaded {
+  opacity: 1;
+}
+
+/* Cosmetic CSS background glow behind image */
+.cosmicBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 35% 45%, rgba(139, 92, 246, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 35% at 65% 55%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0a18 0%, #060610 50%, #070711 100%);
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 12px;
+  color: var(--color-text-muted);
+  position: relative;
+  z-index: 1;
+  min-height: 200px;
+}
+
+.fallbackIcon {
+  font-size: 2.5rem;
+  opacity: 0.3;
+}
+
+.fallbackText {
+  font-size: 0.85rem;
+}
+
+.caption {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.captionText {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.credit,
+.source {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}

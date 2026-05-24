@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import PageTransition from '../../components/PageTransition/PageTransition';
 import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
 import Card from '../../components/Card/Card';
@@ -64,19 +67,14 @@ function SolarSystemSection() {
         </div>
         <div className={`${styles.solarDiagram} reveal`}>
           <svg className={styles.solarSvg} viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-            {/* Milky way disk */}
             <ellipse cx="200" cy="200" rx="180" ry="50" fill="none" stroke="rgba(139,92,246,0.3)" strokeWidth="1" strokeDasharray="4 4" transform="rotate(-20, 200, 200)" />
             <ellipse cx="200" cy="200" rx="160" ry="42" fill="none" stroke="rgba(139,92,246,0.2)" strokeWidth="1" transform="rotate(-20, 200, 200)" />
-            {/* Galactic center */}
             <circle cx="200" cy="200" r="18" fill="rgba(245,158,11,0.2)" stroke="rgba(245,158,11,0.5)" strokeWidth="1.5" />
             <circle cx="200" cy="200" r="6" fill="#f59e0b" />
             <text x="200" y="235" textAnchor="middle" fill="#999" fontSize="11">银心</text>
-            {/* Sun position — offset on the disk */}
             <circle cx="330" cy="155" r="5" fill="#3b82f6" stroke="#60a5fa" strokeWidth="2" />
-            {/* Label line */}
             <line x1="330" y1="150" x2="330" y2="125" stroke="rgba(59,130,246,0.4)" strokeWidth="1" />
             <text x="330" y="118" textAnchor="middle" fill="#60a5fa" fontSize="11" fontWeight="600">太阳系</text>
-            {/* Distance label */}
             <text x="265" y="185" textAnchor="middle" fill="#666" fontSize="9">~2.6 万光年</text>
             <line x1="215" y1="195" x2="325" y2="158" stroke="rgba(255,255,255,0.08)" strokeWidth="1" strokeDasharray="3 3" />
           </svg>
@@ -150,16 +148,39 @@ function FaqSection() {
   );
 }
 
+function CtaSection() {
+  return (
+    <Section id="explore-more" title="探索更多星系">
+      <div style={{ textAlign: 'center' }}>
+        <p style={{ color: 'var(--color-text-secondary)', maxWidth: 560, margin: '0 auto 32px', lineHeight: 1.8, fontSize: '1.05rem' }}>
+          银河系只是宇宙中无数星系中的一个。前往星系列表，了解更多关于仙女座星系、三角座星系、大小麦哲伦云等本星系群成员的知识。
+        </p>
+        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+          <Link
+            to="/galaxies"
+            className={styles.ctaBtn}
+          >
+            浏览宇宙星系馆 &rarr;
+          </Link>
+        </motion.div>
+      </div>
+    </Section>
+  );
+}
+
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <OverviewSection />
-      <StructureSection />
-      <SolarSystemSection />
-      <CelestialBodiesSection />
-      <ExplorationSection />
-      <FaqSection />
-    </main>
+    <PageTransition>
+      <main>
+        <Hero />
+        <OverviewSection />
+        <StructureSection />
+        <SolarSystemSection />
+        <CelestialBodiesSection />
+        <ExplorationSection />
+        <FaqSection />
+        <CtaSection />
+      </main>
+    </PageTransition>
   );
 }

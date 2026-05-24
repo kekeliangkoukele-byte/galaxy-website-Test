@@ -1,0 +1,135 @@
+.page {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  background: #0a0a1a;
+  cursor: grab;
+  user-select: none;
+}
+.page:active {
+  cursor: grabbing;
+}
+.page::-webkit-scrollbar { width: 5px; }
+.page::-webkit-scrollbar-track { background: transparent; }
+.page::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+.page::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+.spacer { pointer-events: none; }
+
+.viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* === View controls === */
+.viewControls {
+  position: fixed;
+  top: calc(var(--navbar-height) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  gap: 6px;
+  background: rgba(10, 10, 30, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  padding: 5px;
+}
+
+.viewBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 100px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+.viewBtn:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+}
+.viewBtnActive {
+  color: #fff;
+  background: rgba(139, 92, 246, 0.18);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.15);
+}
+
+.viewBtnIcon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.viewBtnLabel {
+  letter-spacing: 0.04em;
+}
+
+/* === Center dot === */
+.centerDot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* === Scroll hint === */
+.scrollHint {
+  position: fixed;
+  bottom: 36px;
+  left: 28px;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+.hintLine {
+  display: block;
+  width: 1px;
+  height: 24px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+}
+
+/* === Progress bar === */
+.progressBar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  z-index: 9;
+}
+.progressFill {
+  height: 100%;
+  background: var(--color-accent-cyan);
+  transition: width 0.15s linear;
+  box-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
+}
+
+@media (max-width: 768px) {
+  .scrollHint { bottom: 20px; left: 16px; font-size: 0.6rem; }
+  .viewControls { top: calc(var(--navbar-height) + 8px); }
+  .viewBtn { padding: 5px 12px; font-size: 0.65rem; }
+  .viewBtnLabel { display: none; }
+}

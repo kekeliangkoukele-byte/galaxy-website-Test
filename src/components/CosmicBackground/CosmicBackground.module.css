@@ -1,0 +1,171 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Shared overlay for text readability — refined gradient */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 5, 16, 0.25) 0%,
+    rgba(5, 5, 16, 0.05) 25%,
+    rgba(5, 5, 16, 0.15) 50%,
+    rgba(5, 5, 16, 0.55) 75%,
+    rgba(5, 5, 16, 0.88) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== Base procedural backgrounds ===== */
+.bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Real image background */
+.bgImage {
+  composes: bg;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.6s ease;
+}
+
+/* Emission nebula — warm red/orange/pink gas clouds */
+.bgEmissionNebula {
+  composes: bg;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 50%, rgba(249, 115, 22, 0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 65% 40%, rgba(236, 72, 153, 0.2) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 55%, rgba(139, 92, 246, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 40% 60%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+    linear-gradient(180deg, #1a0a14 0%, #0c0615 50%, #060610 100%);
+  animation: nebulaPulse 8s ease-in-out infinite;
+}
+
+/* Planetary nebula — symmetrical ring glow */
+.bgPlanetaryNebula {
+  composes: bg;
+  background:
+    radial-gradient(ellipse 35% 25% at 50% 50%, rgba(232, 121, 249, 0.3) 0%, transparent 60%),
+    radial-gradient(circle 18% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(200, 168, 252, 0.2) 40%, transparent 60%),
+    radial-gradient(circle 40% at 50% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 70%),
+    radial-gradient(circle 8% at 50% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 30%),
+    linear-gradient(180deg, #0f0a1e 0%, #080618 50%, #060610 100%);
+  animation: ringPulse 6s ease-in-out infinite;
+}
+
+/* Supernova remnant — filamentary cyan/blue web */
+.bgSupernovaRemnant {
+  composes: bg;
+  background:
+    radial-gradient(ellipse 70% 55% at 40% 45%, rgba(34, 211, 238, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 60% 55%, rgba(6, 182, 212, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 30%),
+    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(34, 211, 238, 0.03) 40px, rgba(34, 211, 238, 0.03) 41px),
+    linear-gradient(180deg, #0a1018 0%, #060a14 50%, #060610 100%);
+  animation: filamentFade 10s ease-in-out infinite;
+}
+
+/* Open cluster — scattered star points */
+.bgOpenCluster {
+  composes: bg;
+  background:
+    radial-gradient(circle 2px at 20% 30%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(circle 1.5px at 35% 25%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+    radial-gradient(circle 2px at 50% 35%, rgba(96, 165, 250, 0.7) 0%, transparent 100%),
+    radial-gradient(circle 1px at 28% 40%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+    radial-gradient(circle 1.5px at 45% 20%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+    radial-gradient(circle 2.5px at 55% 30%, rgba(96, 165, 250, 0.8) 0%, transparent 100%),
+    radial-gradient(circle 1px at 40% 45%, rgba(255, 255, 255, 0.35) 0%, transparent 100%),
+    radial-gradient(circle 1.5px at 60% 40%, rgba(255, 255, 255, 0.45) 0%, transparent 100%),
+    radial-gradient(circle 2px at 33% 50%, rgba(191, 219, 254, 0.55) 0%, transparent 100%),
+    radial-gradient(circle 1px at 52% 45%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 50% at 45% 40%, rgba(96, 165, 250, 0.08) 0%, transparent 70%),
+    linear-gradient(180deg, #060a18 0%, #050810 50%, #060610 100%);
+}
+
+/* Globular cluster — dense golden concentration */
+.bgGlobularCluster {
+  composes: bg;
+  background:
+    radial-gradient(circle 35% at 50% 45%, rgba(251, 191, 36, 0.12) 0%, transparent 60%),
+    radial-gradient(circle 22% at 48% 43%, rgba(251, 191, 36, 0.08) 0%, transparent 50%),
+    radial-gradient(circle 12% at 50% 44%, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.05) 30%, transparent 50%),
+    radial-gradient(circle 5% at 50% 42%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+    linear-gradient(180deg, #0c0a08 0%, #080610 50%, #060610 100%);
+}
+
+/* Spiral galaxy — blue/purple spiral */
+.bgSpiralGalaxy {
+  composes: bg;
+  background:
+    radial-gradient(ellipse 80% 30% at 50% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 22% at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle 15% at 50% 50%, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 40%, transparent 60%),
+    radial-gradient(circle 5% at 50% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 30%),
+    linear-gradient(180deg, #060810 0%, #060610 50%, #080610 100%);
+  animation: galaxyGlow 12s ease-in-out infinite;
+}
+
+/* Irregular galaxy — scattered patches */
+.bgIrregularGalaxy {
+  composes: bg;
+  background:
+    radial-gradient(ellipse 40% 25% at 30% 40%, rgba(236, 72, 153, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 20% at 65% 55%, rgba(139, 92, 246, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 25% 15% at 55% 35%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #0c0814 0%, #080610 50%, #060610 100%);
+}
+
+/* Dwarf galaxy — faint diffuse glow */
+.bgDwarfGalaxy {
+  composes: bg;
+  background:
+    radial-gradient(circle 50% at 50% 50%, rgba(168, 139, 252, 0.06) 0%, transparent 70%),
+    radial-gradient(circle 25% at 50% 50%, rgba(168, 139, 252, 0.04) 0%, transparent 50%),
+    linear-gradient(180deg, #08080f 0%, #06060f 50%, #060610 100%);
+}
+
+/* Default deep space */
+.bgDefault {
+  composes: bg;
+  background:
+    radial-gradient(ellipse 60% 50% at 35% 45%, rgba(139, 92, 246, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 35% at 65% 55%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0a18 0%, #060610 50%, #070711 100%);
+}
+
+/* ===== Animations ===== */
+@keyframes nebulaPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.03); opacity: 0.9; }
+}
+
+@keyframes filamentFade {
+  0%, 100% { opacity: 1; }
+  40% { opacity: 0.85; }
+  70% { opacity: 0.95; }
+}
+
+@keyframes galaxyGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.88; }
+}

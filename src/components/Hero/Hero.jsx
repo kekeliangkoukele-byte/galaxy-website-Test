@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { heroContent } from '../../data/content';
 import styles from './Hero.module.css';
 
@@ -8,35 +9,50 @@ export default function Hero() {
 
   return (
     <section id="hero" className={styles.hero}>
-      {/* Floating gradient orbs */}
+      {/* Cosmic depth orbs */}
       <div className={`${styles.orb} ${styles.orb1}`} />
       <div className={`${styles.orb} ${styles.orb2}`} />
       <div className={`${styles.orb} ${styles.orb3}`} />
+      <div className={`${styles.orb} ${styles.orb4}`} />
 
-      {/* CSS galaxy swirl */}
-      <svg className={styles.galaxySvg} viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-        <g fill="none" stroke="#8b5cf6" strokeWidth="1.5" opacity="0.6">
-          {Array.from({ length: 6 }, (_, i) => (
+      {/* Galaxy swirl */}
+      <svg className={styles.galaxySvg} viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="coreGlow" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="#f5a623" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#f5a623" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <g fill="none" stroke="#8b5cf6" strokeWidth="1.2" opacity="0.5">
+          {Array.from({ length: 7 }, (_, i) => (
             <ellipse
               key={i}
-              cx="400" cy="400"
-              rx={120 + i * 55}
-              ry={80 + i * 45}
-              transform={`rotate(${i * 25}, 400, 400)`}
+              cx="450" cy="450"
+              rx={100 + i * 60}
+              ry={65 + i * 48}
+              transform={`rotate(${i * 22}, 450, 450)`}
             />
           ))}
         </g>
-        <ellipse cx="400" cy="400" rx="60" ry="30" fill="#f59e0b" opacity="0.15" />
+        <circle cx="450" cy="450" r="80" fill="url(#coreGlow)" />
       </svg>
 
       <div className={styles.content}>
         <span className={styles.badge}>Explore the Cosmos</span>
         <h1 className={styles.title}>{heroContent.title}</h1>
         <p className={styles.subtitle}>{heroContent.subtitle}</p>
-        <button className={styles.cta} onClick={scrollToOverview}>
-          {heroContent.cta}
-          <span className={styles.arrow}>&darr;</span>
-        </button>
+        <div className={styles.ctaGroup}>
+          <button className={styles.cta} onClick={scrollToOverview}>
+            {heroContent.cta}
+            <span className={styles.arrow}>&darr;</span>
+          </button>
+          <Link to="/galaxies" className={styles.ctaSecondary}>
+            浏览宇宙星系馆 &rarr;
+          </Link>
+          <Link to="/explore" className={styles.ctaTertiary}>
+            探索宇宙尺度 &rarr;
+          </Link>
+        </div>
       </div>
 
       <div className={styles.scrollHint}>

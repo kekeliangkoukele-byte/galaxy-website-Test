@@ -1,0 +1,43 @@
+.page { padding: 120px 0 80px; }
+.hero { text-align: center; margin-bottom: 48px; }
+.title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; margin-bottom: 12px; }
+.title span { background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.subtitle { color: var(--color-text-secondary); font-size: 1.05rem; }
+
+.section { margin-bottom: 56px; }
+.sectionHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.sectionTitle { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: #fff; }
+.sectionActions { display: flex; align-items: center; gap: 12px; }
+.count { font-size: 0.85rem; color: var(--color-text-muted); }
+.clearBtn { padding: 6px 14px; font-size: 0.82rem; color: #ef4444; background: none; border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius-sm); cursor: pointer; transition: background 0.2s; font-family: var(--font-sans); }
+.clearBtn:hover { background: rgba(239,68,68,0.1); }
+
+.tableWrapper { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.08); }
+.table { width: 100%; border-collapse: collapse; min-width: 600px; }
+.table th, .table td {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.table thead th {
+  background: rgba(255,255,255,0.04);
+  font-weight: 600;
+  color: #fff;
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+}
+.table tbody td { color: var(--color-text-secondary); }
+.table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+.rowLabel { color: var(--color-text-muted) !important; font-weight: 500 !important; font-size: 0.82rem !important; min-width: 120px; }
+.colHeader { display: flex; align-items: center; gap: 8px; }
+.colDot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.removeBtn { background: none; border: none; color: var(--color-text-muted); font-size: 1.2rem; cursor: pointer; margin-left: auto; padding: 0 4px; line-height: 1; transition: color 0.2s; }
+.removeBtn:hover { color: #ef4444; }
+
+.emptyState { text-align: center; padding: 60px 20px; color: var(--color-text-muted); }
+.emptyIcon { font-size: 3rem; display: block; margin-bottom: 12px; opacity: 0.5; }
+.browseLink { display: inline-block; margin-top: 12px; color: var(--color-accent-purple); text-decoration: none; font-size: 0.95rem; transition: opacity 0.2s; }
+.browseLink:hover { opacity: 0.8; }

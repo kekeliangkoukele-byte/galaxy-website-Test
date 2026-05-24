@@ -1,0 +1,86 @@
+.page { padding: 120px 0 80px; }
+.backLink { display: inline-flex; align-items: center; gap: 8px; color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 32px; transition: color var(--transition-fast); text-decoration: none; }
+.backLink:hover { color: #fff; }
+
+.header { margin-bottom: 32px; }
+.nameRow { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+.name { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: #fff; }
+.nameEn { font-size: 1.05rem; color: var(--color-text-muted); font-style: italic; }
+.typeTag {
+  display: inline-block; padding: 4px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--color-accent-cyan);
+  border: 1px solid rgba(6,182,212,0.25);
+  border-radius: 100px;
+  background: rgba(6,182,212,0.06);
+  margin-bottom: 18px;
+}
+.description { font-size: 1rem; color: var(--color-text-secondary); line-height: 1.85; max-width: 780px; }
+
+.sectionTitle { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 18px; letter-spacing: 0.02em; }
+
+/* Star info */
+.starCard {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-left: 3px solid var(--color-accent-gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 22px;
+  margin-bottom: 36px;
+  backdrop-filter: blur(8px);
+}
+.starName { font-size: 1.1rem; font-weight: 700; color: var(--color-accent-gold); margin-bottom: 16px; }
+.starGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.starStat { padding: 6px 0; }
+.starStatLabel { display: block; font-size: 0.68rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+.starStatValue { font-size: 0.88rem; color: var(--color-text-primary); font-weight: 500; }
+
+/* Position info */
+.positionGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 36px; }
+.positionCard {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  backdrop-filter: blur(8px);
+  transition: border-color var(--transition-normal);
+}
+.positionCard:hover { border-color: rgba(255,255,255,0.12); }
+.positionLabel { font-size: 0.68rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.positionValue { font-size: 0.9rem; color: #fff; font-weight: 500; }
+
+.note {
+  padding: 16px 20px;
+  background: rgba(34,211,238,0.04);
+  border-left: 3px solid var(--color-accent-cyan);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem; line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+/* Planets */
+.planetGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+.planetCard {
+  display: block;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  text-decoration: none; color: inherit;
+  backdrop-filter: blur(8px);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
+  position: relative; overflow: hidden;
+}
+.planetCard:hover {
+  border-color: rgba(255,255,255,0.14);
+  box-shadow: 0 8px 36px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+}
+.planetAccent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--planet-color, var(--color-accent-purple)); }
+.planetName { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.planetNameEn { font-size: 0.78rem; color: var(--color-text-muted); font-style: italic; margin-bottom: 8px; display: block; }
+.planetType { font-size: 0.78rem; color: var(--planet-color, var(--color-accent-purple)); margin-bottom: 8px; }
+.planetDesc { font-size: 0.86rem; color: var(--color-text-secondary); line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.planetArrow { display: inline-block; margin-top: 10px; font-size: 0.82rem; color: var(--planet-color, var(--color-accent-purple)); }
+.noData { text-align: center; padding: 40px 0; color: var(--color-text-muted); }

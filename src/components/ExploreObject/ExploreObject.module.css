@@ -1,0 +1,161 @@
+.object {
+  position: absolute;
+  transform: translate(-50%, -50%) translateZ(var(--z-depth, 0px));
+  transform-style: preserve-3d;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
+  transition: opacity 0.4s ease, width 0.4s ease, height 0.4s ease;
+}
+
+.object:hover {
+  z-index: 10;
+}
+
+.object:hover .shape {
+  transform: scale(1.18);
+  filter: brightness(1.4);
+}
+
+.object:active .shape {
+  transform: scale(0.9);
+}
+
+.shape {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.3s ease;
+}
+
+/* === Glow ring === */
+.glowRing {
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent, #8b5cf6) 15%, transparent);
+  opacity: 0.5;
+  animation: ringPulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.12); opacity: 0.6; }
+}
+
+/* === Dot (small apparent size) === */
+.dot {
+  background: var(--accent, #8b5cf6);
+  box-shadow:
+    0 0 6px var(--accent, #8b5cf6),
+    0 0 16px color-mix(in srgb, var(--accent, #8b5cf6) 45%, transparent),
+    0 0 32px color-mix(in srgb, var(--accent, #8b5cf6) 20%, transparent);
+  border-radius: 50%;
+}
+
+/* === Galaxy — elliptical glow === */
+.galaxyLarge {
+  border-radius: 38% 42% 45% 40%;
+  background:
+    radial-gradient(ellipse 65% 35% at 50% 50%, color-mix(in srgb, var(--accent, #8b5cf6) 55%, transparent) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 22% at 50% 50%, color-mix(in srgb, var(--accent, #3b82f6) 35%, transparent) 0%, transparent 50%),
+    radial-gradient(circle 18% at 50% 50%, rgba(255,255,255,0.3) 0%, transparent 45%);
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--accent, #8b5cf6) 35%, transparent),
+    0 0 80px color-mix(in srgb, var(--accent, #8b5cf6) 12%, transparent),
+    0 0 120px color-mix(in srgb, var(--accent, #8b5cf6) 5%, transparent);
+  animation: galaxySpin 18s linear infinite;
+}
+
+@keyframes galaxySpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* === Nebula — irregular glow === */
+.nebulaLarge {
+  border-radius: 42% 48% 44% 51%;
+  background:
+    radial-gradient(ellipse 55% 40% at 40% 45%, color-mix(in srgb, var(--accent, #f97316) 45%, transparent) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 60% 55%, color-mix(in srgb, var(--accent, #ec4899) 30%, transparent) 0%, transparent 55%),
+    radial-gradient(circle 12% at 50% 50%, rgba(255,255,255,0.12) 0%, transparent 40%);
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--accent, #f97316) 30%, transparent),
+    0 0 50px color-mix(in srgb, var(--accent, #f97316) 10%, transparent),
+    inset 0 0 18px color-mix(in srgb, var(--accent, #f97316) 12%, transparent);
+  animation: nebulaPulse 6s ease-in-out infinite;
+}
+
+@keyframes nebulaPulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+/* === Star System — central dot + ring === */
+.systemLarge {
+  border-radius: 50%;
+  background: radial-gradient(circle 20% at 50% 50%, #fff 0%, color-mix(in srgb, var(--accent, #fbbf24) 65%, transparent) 40%, transparent 70%);
+  box-shadow:
+    0 0 30px color-mix(in srgb, var(--accent, #fbbf24) 55%, transparent),
+    0 0 10px color-mix(in srgb, var(--accent, #fbbf24) 85%, transparent),
+    0 0 60px color-mix(in srgb, var(--accent, #fbbf24) 15%, transparent);
+  position: relative;
+}
+
+.systemLarge::after {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--accent, #fbbf24) 18%, transparent);
+  animation: ringOrbit 8s linear infinite;
+}
+
+@keyframes ringOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* === Planet — gradient sphere === */
+.planetLarge {
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,0.35) 0%, transparent 35%),
+    radial-gradient(circle at 60% 65%, rgba(0,0,0,0.3) 0%, var(--accent, #3b82f6) 100%);
+  box-shadow:
+    0 6px 24px rgba(0,0,0,0.5),
+    0 0 20px color-mix(in srgb, var(--accent, #3b82f6) 25%, transparent),
+    inset 0 -6px 12px rgba(0,0,0,0.4);
+}
+
+/* === Label === */
+.label {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateZ(1px);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.labelZh {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+  text-shadow:
+    0 0 10px rgba(0,0,0,0.9),
+    0 0 4px rgba(0,0,0,0.7);
+}
+
+.labelEn {
+  display: block;
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  line-height: 1.3;
+  text-shadow: 0 0 6px rgba(0,0,0,0.8);
+}

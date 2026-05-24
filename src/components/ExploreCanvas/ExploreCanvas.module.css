@@ -1,0 +1,51 @@
+.canvas {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+.emptySub {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 10px;
+}
+
+.emptyMeta {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+}
+
+.emptyMeta sup {
+  font-size: 0.55rem;
+}
+
+.objectCount {
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  z-index: 5;
+}

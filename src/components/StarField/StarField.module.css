@@ -10,22 +10,51 @@
   position: absolute;
   border-radius: 50%;
   background: #fff;
-  animation: twinkle var(--duration) ease-in-out infinite;
-  animation-delay: var(--delay);
+  animation:
+    twinkle var(--twinkle-duration, 3s) ease-in-out infinite,
+    drift var(--drift-duration, 60s) linear infinite;
+  animation-delay: var(--twinkle-delay, 0s);
 }
 
+/* === Depth layers === */
+/* Deep layer — large, slow, dim — far away */
+.layer0 {
+  opacity: calc(var(--opacity) * 0.6);
+  filter: blur(0.4px);
+}
+/* Mid layer — balanced */
+.layer1 {
+  opacity: var(--opacity);
+}
+/* Near layer — small, fast, bright — close */
+.layer2 {
+  opacity: calc(var(--opacity) * 1.1);
+  filter: blur(0.2px);
+}
+
+/* === Animations === */
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.2; }
+  25% { opacity: 0.9; }
+  50% { opacity: 0.35; }
+  75% { opacity: 0.75; }
 }
 
-/* Slow drift for a parallax-like feel on large stars */
-.star:nth-child(3n) {
-  animation: drift 60s linear infinite, twinkle var(--duration) ease-in-out infinite;
-}
-
+/* Slow vertical drift for parallax depth */
 @keyframes drift {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-18px) translateX(6px);
+  }
+  50% {
+    transform: translateY(-6px) translateX(-4px);
+  }
+  75% {
+    transform: translateY(-24px) translateX(2px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
 }
